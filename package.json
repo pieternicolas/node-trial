@@ -1,0 +1,30 @@
+{
+  "name": "node-trial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pieternicolas/node-trial.git"
+  },
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "pieternicolas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pieternicolas/node-trial/issues"
+  },
+  "homepage": "https://github.com/pieternicolas/node-trial#readme",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "mongodb": "^2.2.31"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}

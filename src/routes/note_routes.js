@@ -3,10 +3,18 @@ const ObjectID = require('mongodb').ObjectID;
 
 module.exports = function( app, db ) {
 
-
+	/*
+	* GET all notes
+	*	@return = Array
+	*/
 	app.get( '/notes', (req, res) => {
-		const result = db.collection('notes').find();
-
+		const result = db.collection('notes').find().toArray((err, items) => {
+			if (err) {
+				res.send(err);
+			} else {
+				res.status(200).json(items);
+			};
+		});
 	});
 
 
@@ -15,9 +23,9 @@ module.exports = function( app, db ) {
 		const details = { '_id': new ObjectID(id) };
 		db.collection('notes').findOne(details, (err, item) => {
 			if (err) {
-				res.send({'error':'An error has occurred'});
+				res.send(err);
 			} else {
-				res.send(item);
+				res.status(200).json(item);
 			};
 		});
 	});
@@ -30,9 +38,9 @@ module.exports = function( app, db ) {
 		};
 		db.collection('notes').insert(note, (err, result) => {
 			if (err) { 
-				res.send({ 'error': 'An error has occurred' }); 
+				res.send(err);
 			} else {
-				res.send(result.ops[0]);
+				res.status(200).json(result.ops[0]);
 			};
 		});
 	});
@@ -43,9 +51,9 @@ module.exports = function( app, db ) {
 		const details = { '_id': new ObjectID(id) };
 		db.collection('notes').remove(details, (err, item) => {
 			if (err) {
-				res.send({'error':'An error has occurred'});
+				res.send(err);
 			} else {
-				res.send('Note' + id + 'deleted!');
+				res.status(200).json({ message: 'Note' + id + 'deleted!' });
 			};
 		});
 	});
@@ -60,9 +68,9 @@ module.exports = function( app, db ) {
 		};
 		db.collection('notes').update(details, note, (err, result) => {
 			if (err) {
-				res.send({'error':'An error has occurred'});
+				res.send(err);
 			} else {
-				res.send(note);
+				res.status(200).json(note);
 			};
 		});
 	});

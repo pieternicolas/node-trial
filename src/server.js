@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import express from 'express';
 import { MongoClient } from 'mongodb';
 import bodyParser from 'body-parser';

@@ -1,7 +1,7 @@
-const ObjectID = require('mongodb').ObjectID;
+import { ObjectID } from 'mongodb';
 
 
-module.exports = function( app, db ) {
+export default function( app, db ) {
 
 	/*
 	* GET all notes

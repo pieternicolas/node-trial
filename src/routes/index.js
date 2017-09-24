@@ -1,7 +1,7 @@
-const noteRoutes = require('./note_routes');
+import noteRoutes from './note_routes.js';
 
 
-module.exports = function(app, db) {
+export default function( app, db ) {
 	app.get('/', (req, res) => {
 		res.status(200).send('Hello to node trial');
 	});

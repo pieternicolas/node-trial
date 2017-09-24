@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/pieternicolas/node-trial#readme",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "mongodb": "^2.2.31"

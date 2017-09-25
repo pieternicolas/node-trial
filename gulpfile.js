@@ -69,3 +69,12 @@ gulp.task('watch-no-test', ['compile'], () => {
  
   return stream;
 });
+
+gulp.task('watch-lite', () => {
+  const stream = nodemon({
+                   script: 'dist/server.js',    // run ES5 code 
+                   watch: 'src'                 // watch ES2015 code 
+                 });
+ 
+  return stream;
+});

@@ -7,7 +7,7 @@
     "dev": "gulp watch",
     "start": "gulp watch-no-test",
     "start-test": "gulp watch",
-    "build": "gulp compress",
+    "build": "webpack",
     "serve": "npm run build && node dist/server.js",
     "watch-test": "supervisor -q -n exit -x mocha -- -b --compilers js:babel-register",
     "test": "gulp test"
@@ -30,6 +30,8 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.26.0",
     "gulp": "^3.9.1",
@@ -37,10 +39,12 @@
     "gulp-file-cache": "0.0.1",
     "gulp-mocha": "^4.3.1",
     "gulp-nodemon": "^2.2.1",
-    "gulp-uglify": "^3.0.0",
     "mocha": "^3.5.3",
     "nodemon": "^1.12.1",
     "pump": "^1.0.2",
-    "supervisor": "^0.12.0"
+    "supervisor": "^0.12.0",
+    "uglify-js": "^3.1.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.6.0"
   }
 }

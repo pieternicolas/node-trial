@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "gulp watch",
     "start": "gulp watch-no-test",
-    "start-lite": "gulp watch-lite",
     "start-test": "gulp watch",
     "build": "gulp compress",
     "serve": "npm run build && node dist/server.js",

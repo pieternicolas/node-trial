@@ -8,7 +8,7 @@
     "start": "gulp watch-no-test",
     "start-test": "gulp watch",
     "build": "webpack",
-    "serve": "npm run build && node dist/server.js",
+    "serve": "npm run build && node dist/server.min.js",
     "watch-test": "supervisor -q -n exit -x mocha -- -b --compilers js:babel-register",
     "test": "gulp test"
   },

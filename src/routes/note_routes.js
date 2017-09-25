@@ -1,33 +1,39 @@
 import { ObjectID } from 'mongodb';
+import responder from './../responders/';
 
+import notesController from './../controllers/notes_controller.js';
 
-export default function( app, db ) {
+export default function ( app, db ) {
 
 	/*
 	* GET all notes
+	* =============
 	*	@return = Array
 	*/
-	app.get( '/notes', (req, res) => {
-		const result = db.collection('notes').find().toArray((err, items) => {
-			if (err) {
-				res.send(err);
-			} else {
-				res.status(200).json(items);
-			};
-		});
+	app.get( '/notes', (req, res, next) => {
+		notesController.getNotes(app, db)
+			.then(response => {
+				responder(res, next, response);
+			})
+			.catch(error => {
+				responder(res, next);
+			});
 	});
 
-
-	app.get( '/notes/:id', (req, res) => {
-		const id = req.params.id;
-		const details = { '_id': new ObjectID(id) };
-		db.collection('notes').findOne(details, (err, item) => {
-			if (err) {
-				res.send(err);
-			} else {
-				res.status(200).json(item);
-			};
-		});
+	/*
+	* GET single note
+	* ===============
+	* @param = String
+	* @return = Object
+	*/
+	app.get( '/notes/:id', (req, res, next) => {
+		notesController.getSingleNote(app, db, req.params)
+			.then(response => {
+				responder(res, next, response);
+			})
+			.catch(error => {
+				responder(res, next);
+			});
 	});
 
 

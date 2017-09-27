@@ -82,19 +82,6 @@ export default function ( app, db ) {
 			.catch(error => {
 				responder(res, next);
 			});
-		// const id = req.params.id;
-		// const details = { '_id': new ObjectID(id) };
-		// const note = {
-		// 	text: req.body.body,
-		// 	title: req.body.title
-		// };
-		// db.collection('notes').update(details, note, (err, result) => {
-		// 	if (err) {
-		// 		res.send(err);
-		// 	} else {
-		// 		res.status(200).json(note);
-		// 	};
-		// });
 	});
 
 };

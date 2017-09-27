@@ -58,4 +58,21 @@ const postNote = async ( app, db, data ) => {
 };
 
 
-export default { getNotes, getSingleNote, postNote };
+const deleteNote = async ( app, db, params ) => {
+	const result = await notesModel.deleteNote(db, params.id)
+		.then(res => {
+			if (res.result.n === 0) {
+				return { status: 404 };
+			} else {
+				return { status: 200, data: 'Note deleted successfully' };
+			};
+		})
+		.catch(err => {
+			return new Error(err);
+		});
+
+	return result;
+};
+
+
+export default { getNotes, getSingleNote, postNote, deleteNote };

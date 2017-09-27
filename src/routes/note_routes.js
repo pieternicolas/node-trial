@@ -52,17 +52,20 @@ export default function ( app, db ) {
 			});
 	});
 
-
-	app.delete( '/notes/:id', (req, res) => {
-		const id = req.params.id;
-		const details = { '_id': new ObjectID(id) };
-		db.collection('notes').remove(details, (err, item) => {
-			if (err) {
-				res.send(err);
-			} else {
-				res.status(200).json({ message: 'Note' + id + 'deleted!' });
-			};
-		});
+	/*
+	* DELETE single note
+	* ==================
+	* @param = String (_id)
+	* @return = HTTP status
+	*/
+	app.delete( '/notes/:id', (req, res, next) => {
+		notesController.deleteNote(app, db, req.params)
+			.then(response => {
+				responder(res, next, response);
+			})
+			.catch(error => {
+				responder(res, next);
+			});
 	});
 
 

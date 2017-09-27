@@ -5,12 +5,13 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "gulp watch",
-    "start": "gulp watch-no-test",
+    "start": "npm run clean-dist && gulp watch-no-test",
     "start-test": "gulp watch",
-    "build": "webpack",
+    "build": "npm run clean-dist && webpack",
     "serve": "npm run build && node dist/server.min.js",
     "watch-test": "supervisor -q -n exit -x mocha -- -b --compilers js:babel-register",
-    "test": "gulp test"
+    "test": "gulp test",
+    "clean-dist": "rm -rf dist/"
   },
   "repository": {
     "type": "git",

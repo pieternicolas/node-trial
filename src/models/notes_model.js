@@ -24,4 +24,15 @@ const getSingleNote = async ( db, params ) => {
 };
 
 
-export default { getNotes, getSingleNote };
+const postNote = async ( db, data ) => {
+	let result;
+	try {
+		result = await db.collection('notes').insert(data);
+	} catch(e) {
+		result = new Error(e);
+	};
+	return result.ops[0];
+};
+
+
+export default { getNotes, getSingleNote, postNote };

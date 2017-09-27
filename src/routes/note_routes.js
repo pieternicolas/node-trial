@@ -36,19 +36,20 @@ export default function ( app, db ) {
 			});
 	});
 
-
-	app.post( '/notes', (req, res) => {
-		const note = {
-			text: req.body.body,
-			title: req.body.title
-		};
-		db.collection('notes').insert(note, (err, result) => {
-			if (err) { 
-				res.send(err);
-			} else {
-				res.status(200).json(result.ops[0]);
-			};
-		});
+	/*
+	* POST new note
+	* =============
+	* @param = Object (text, title)
+	* @return = Object (_id, text, title)
+	*/
+	app.post( '/notes', (req, res, next) => {
+		notesController.postNote(app, db, req.body)
+			.then(response => {
+				responder(res, next, response);
+			})
+			.catch(error => {
+				responder(res, next);
+			});
 	});
 
 

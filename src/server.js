@@ -10,12 +10,14 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-MongoClient.connect(config.db, (err, database) => {
-	if (err) return console.log(err);
-	
-	routes(app, database);
+MongoClient.connect(config.db)
+	.then(database => {
+		routes(app, database);
 
-	app.listen(config.port, () => {
-		console.log('We are live on ' + config.port);
+		app.listen(config.port, () => {
+			console.log('We are live on ' + config.port);
+		});
+	})
+	.catch(error => {
+		console.log(err);
 	});
-});

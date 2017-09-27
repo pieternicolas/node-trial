@@ -23,7 +23,7 @@ export default function ( app, db ) {
 	/*
 	* GET single note
 	* ===============
-	* @param = String
+	* @param = String (_id)
 	* @return = Object
 	*/
 	app.get( '/notes/:id', (req, res, next) => {
@@ -68,21 +68,33 @@ export default function ( app, db ) {
 			});
 	});
 
-
-	app.post('/notes/:id/edit', (req, res) => {
-		const id = req.params.id;
-		const details = { '_id': new ObjectID(id) };
-		const note = {
-			text: req.body.body,
-			title: req.body.title
-		};
-		db.collection('notes').update(details, note, (err, result) => {
-			if (err) {
-				res.send(err);
-			} else {
-				res.status(200).json(note);
-			};
-		});
+	/*
+	* UPDATE single note
+	* =================
+	* @param = String (_id)
+	* @return = Object
+	*/
+	app.post('/notes/:id/edit', (req, res, next) => {
+		notesController.updateNote(app, db, req.params, req.body)
+			.then(response => {
+				responder(res, next, response);
+			})
+			.catch(error => {
+				responder(res, next);
+			});
+		// const id = req.params.id;
+		// const details = { '_id': new ObjectID(id) };
+		// const note = {
+		// 	text: req.body.body,
+		// 	title: req.body.title
+		// };
+		// db.collection('notes').update(details, note, (err, result) => {
+		// 	if (err) {
+		// 		res.send(err);
+		// 	} else {
+		// 		res.status(200).json(note);
+		// 	};
+		// });
 	});
 
 };

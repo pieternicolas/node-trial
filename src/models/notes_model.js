@@ -47,4 +47,16 @@ const deleteNote = async ( db, params ) => {
 };
 
 
-export default { getNotes, getSingleNote, postNote, deleteNote };
+const updateNote = async ( db, params, data ) => {
+	let result;
+	const details = { '_id': new ObjectID(params) };
+	try {
+		result = await db.collection('notes').update(details, data);
+	} catch(e) {
+		result = new Error(e);
+	};
+	return result;
+};
+
+
+export default { getNotes, getSingleNote, postNote, deleteNote, updateNote };

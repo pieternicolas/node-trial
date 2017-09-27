@@ -1,5 +1,5 @@
 import createError from 'http-errors';
-import notesModel from './../models/notes_model.js';
+import { notesModel } from './../models/';
 
 
 const getNotes = ( app, db ) => {

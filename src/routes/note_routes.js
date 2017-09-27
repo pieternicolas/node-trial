@@ -1,7 +1,6 @@
-import { ObjectID } from 'mongodb';
 import responder from './../responders/';
+import { notesController } from './../controllers/';
 
-import notesController from './../controllers/notes_controller.js';
 
 export default function ( app, db ) {
 

@@ -1,1 +1,3 @@
-export const port = 8080;
+const port = 8080;
+
+export default port;

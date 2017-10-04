@@ -17,4 +17,8 @@ export default ( app, db ) => {
 
 	noteRoutes(app, db);
 	// Other route groups could go here, in the future
+
+	app.all('*', (req, res, next) => {
+		responder(res, next, { status: 404, data: 'Endpoint does not exist' });
+	});
 };

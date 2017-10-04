@@ -1,7 +1,6 @@
 import responder from './../util/responder.js';
 import { notesController } from './../controllers/';
 
-// const notesController = controllers.notesController;
 
 export default ( app, db ) => {
 

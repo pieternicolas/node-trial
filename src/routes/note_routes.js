@@ -1,8 +1,9 @@
-import responder from './../responders/';
+import responder from './../util/responder.js';
 import { notesController } from './../controllers/';
 
+// const notesController = controllers.notesController;
 
-export default function ( app, db ) {
+export default ( app, db ) => {
 
 	/*
 	* GET all notes

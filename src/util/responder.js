@@ -1,4 +1,4 @@
-export default function (res, next, param) {
+export default (res, next, param) => {
 	const status = param.status ? param.status : 500;
 	const data = param.data;
 

@@ -1,16 +1,17 @@
 import noteRoutes from './note_routes.js';
+import responder from './../util/responder.js';
 import swaggerFile from './../../swagger.json';
 
-export default function ( app, db ) {
+export default ( app, db ) => {
 	app.get('/', (req, res) => {
 		res.status(200).send('Hello to node trial');
 	});
 
-	app.get('/swagger.json', (req, res) => {
+	app.get('/swagger.json', (req, res, next) => {
 		if (swaggerFile) {
 			res.status(200).send(swaggerFile);
 		} else {
-			res.send(404);
+			responder(res, next, { status: 404 });
 		};
 	});
 

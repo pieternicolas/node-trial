@@ -1,7 +1,2 @@
-import Notes from './notes_model.js';
-import User from './user_model.js';
-
-const notesModel = Notes;
-const userModel = User;
-
-export { notesModel, userModel };
+export { default as notesModel } from './notes_model.js';
+export { default as userModel } from './user_model.js';

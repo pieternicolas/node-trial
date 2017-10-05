@@ -9,7 +9,7 @@
     "test": "gulp e2e",
     "build": "npm run clean && webpack",
     "serve": "npm run build && node dist/server.min.js",
-    "clean": "rm -rf dist/ && rm .gulp-cache"
+    "clean": "rm -rf dist/ && rm .gulp-cache || true"
   },
   "repository": {
     "type": "git",

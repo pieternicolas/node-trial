@@ -15,7 +15,7 @@ const DIST_DIR = path.join(__dirname, 'dist'),
 /*
 * To run unit tests with Mocha
 */
-gulp.task('unitTests',['compile'], () => {
+gulp.task('unitTests', () => {
   return gulp.src(TEST_DIR)
     .pipe(mocha({
       reporter: 'spec',
@@ -39,6 +39,17 @@ gulp.task('compile', () => {
   return stream;
 });
 
+
+/*
+*  MAIN SCRIPT
+*  -----------
+*  runs unit tests and node server while watching src/
+*/
+
+gulp.task('e2e', () => {
+  return gulp.watch(['src/*.js','test/*.js'], ['unitTests']);
+});
+
 /*
 *  Run nodemon watchers
 */
@@ -50,15 +61,4 @@ gulp.task('watch', ['compile'], () => {
                  });
  
   return stream;
-});
-
-
-/*
-*  MAIN SCRIPT
-*  -----------
-*  runs unit tests and node server while watching src/
-*/
-
-gulp.task('e2e', () => {
-  return gulp.watch(['src/*.js','test/*.js'], ['unitTests']);
 });

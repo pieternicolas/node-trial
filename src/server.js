@@ -17,13 +17,14 @@ app.use((req, res, next) => {
 
 
 let db;
-async function connect() { await MongoClient.connect(config.db)
-	.then(database => {
-		db = database;
-	})
-	.catch(err => {
-		throw err;
-	})
+async function connect() { 
+	await MongoClient.connect(config.db)
+		.then(database => {
+			db = database;
+		})
+		.catch(err => {
+			throw err;
+		});
 };
 
 

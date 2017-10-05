@@ -28,12 +28,12 @@ gulp.task('unitTests', () => {
 */
 gulp.task('compile', () => {
   const stream = gulp.src('./src/**/*.js')      // watch for changes
-                 // .pipe(cache.filter())          // filter out files that didn't change in cache
+                 .pipe(cache.filter())          // filter out files that didn't change in cache
                  .pipe(babel({
                    presets: ['env'],             // pipe through babel-preset-env
                    plugins: ['transform-runtime']
                  }))
-                 // .pipe(cache.cache())           // store changed files in cache
+                 .pipe(cache.cache())           // store changed files in cache
                  .pipe(gulp.dest( DIST_DIR ));    // spit out built files in /dist
 
   return stream;

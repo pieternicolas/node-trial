@@ -1,24 +1,38 @@
+// IMPORTANT FOR TESTING
+process.env.NODE_ENV = 'test';
+
+
+// Require all modules necessary
+require('babel-polyfill');
 const chai = require('chai');
-const chaiHttp = require('chai-http');
-const should = require('chai').should();
-chai.use(chaiHttp);
+const expect = require('chai').expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+const request = require('supertest');
 
-const config = require('./../src/config');
-const mainUrl = 'http://127.0.0.1:' + config.default.port;
 
+// Require all tests
 const notesTester = require('./notes.js');
 
+
+// Require main server file
+const mainUrl = require('./../dist/server.js').default;
+
+
+// Server sanity check
 describe('Example Node Server', () => {
   it('Should return 200', done => {
-    chai.request(mainUrl)
+    request(mainUrl)
     	.get('/')
     	.end((err, res) => {
-    		res.should.have.status(200);
+        expect(res.status).to.be.equal(200);
     		done();
     	});
   });
 });
 
+
+// Notes controller tests
 describe('Notes', () => {
-	notesTester(chai, mainUrl);
+	notesTester(request, mainUrl);
 });

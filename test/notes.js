@@ -1,25 +1,26 @@
 const http = require('http');
-const should = require('chai').should();
+const expect = require('chai').expect;
 
-module.exports = (chai, mainUrl) => {
-
-	const url = mainUrl + '/notes';
+module.exports = (request, mainUrl) => {
 
 	describe('/GET all notes', () => {
-		it('Should get all books and as Array', done => {
-			chai.request(url)
-				.get('/')
+		it('Should get all books and as Array', () => {
+			request(mainUrl)
+				.get('/notes')
 				.end((err, res) => {
-					res.should.have.status(200);
-					res.body.should.be.a('array');
-					done();
+          // expect(res.status).to.be.equal(200);
+          // expect(res.body).to.be.an('array');
+          return Promise.all([
+            expect(Promise.resolve(res.status).to.eventually.be.equal(200)),
+            expect(Promise.resolve(res.body).to.eventually.be.an('array'))
+          ]);
 				});
 		});
 	});
 
 	// describe('/GET single note', () => {
 	// 	it('Should return 404 with random params', done => {
-	// 		chai.request(url)
+	// 		request(url)
 	// 			.get('/notes' + '')
 	// 	});
 	// });

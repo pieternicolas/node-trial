@@ -47,7 +47,7 @@ gulp.task('compile', () => {
 */
 
 gulp.task('e2e', () => {
-  return gulp.watch(['src/*.js','test/*.js'], ['unitTests']);
+  return gulp.watch(['src/**/*.js','test/**/*.js'], ['unitTests']);
 });
 
 /*

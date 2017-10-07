@@ -26,7 +26,8 @@
     "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "jsonwebtoken": "^8.0.1",
-    "mongodb": "^2.2.31"
+    "mongodb": "^2.2.31",
+    "mysql": "^2.15.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

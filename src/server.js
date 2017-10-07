@@ -3,8 +3,9 @@ import express from 'express';
 import { MongoClient } from 'mongodb';
 import bodyParser from 'body-parser';
 
-import config from './config/';
+import { port } from './config/';
 import routes from './routes/';
+import connect from './util/database.js';
 
 const app = express();
 
@@ -15,31 +16,24 @@ app.use((req, res, next) => {
   next();
 });
 
-
-let db;
-async function connect() { 
-	await MongoClient.connect(config.db)
-		.then(database => {
-			db = database;
-		})
-		.catch(err => {
-			throw err;
-		});
-};
-
+// const db = connect.mysql()
 
 if (process.env.NODE_ENV != 'test')	{
-	connect()
-		.then(() => {
-			routes(app, db);
 
-			app.listen(config.port, () => {
-				console.log('We are live on ' + config.port);
+	connect.mongodb()
+		.then(conn => {
+			routes(app, conn);
+
+			app.listen(port, () => {
+				console.log('We are live on ' + port);
 			});
 		});
+
 } else {
-	connect();
-	routes(app, db);
+
+	const conn = connect.mongodb();
+	routes(app, conn);
+	
 };
 
 

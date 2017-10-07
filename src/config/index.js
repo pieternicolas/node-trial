@@ -1,7 +1,2 @@
-import db from './db.js';
-import port from './port.js';
-
-export default {
-	db: db,
-	port: port
-};
+export { default as db } from './db.js';
+export { default as port } from './port.js';

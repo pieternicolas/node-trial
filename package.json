@@ -40,6 +40,8 @@
     "chai-as-promised": "^7.1.1",
     "chai-http": "^3.0.0",
     "concurrently": "^3.5.0",
+    "db-migrate": "^0.10.0-beta.24",
+    "db-migrate-mysql": "^1.1.10",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
     "gulp-file-cache": "0.0.1",

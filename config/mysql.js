@@ -1,6 +1,8 @@
+const settings = require('./../database.json');
+
 module.exports = {
-	host: '127.0.0.1',
-	user: 'root',
-	password: '',
-	database: 'node_trial'
+	host: settings.dev.host,
+	user: settings.dev.user,
+	password: settings.dev.password,
+	database: settings.dev.database
 };

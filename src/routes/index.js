@@ -1,6 +1,9 @@
-import noteRoutes from './note_routes.js';
 import responder from './../util/responder.js';
 import swaggerFile from './../../swagger.json';
+
+
+import noteRoutes from './note_routes.js';
+import userRoutes from './user_routes.js';
 
 
 export default ( app ) => {
@@ -19,6 +22,7 @@ export default ( app ) => {
 	});
 	
 
+	userRoutes(app);
 	noteRoutes(app);
 	// Other route groups could go here, in the future
 

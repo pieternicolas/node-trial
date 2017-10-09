@@ -23,11 +23,13 @@
   "homepage": "https://github.com/pieternicolas/node-trial#readme",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "jsonwebtoken": "^8.0.1",
     "mongodb": "^2.2.31",
-    "mysql": "^2.15.0"
+    "mysql": "^2.15.0",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

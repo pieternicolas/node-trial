@@ -4,7 +4,7 @@ import { notesModel } from './../models/';
 export default {
 
 	getNotes: async ( app ) => {
-		const result = notesModel.getNotes()
+		const result = await notesModel.getNotes()
 			.then(res => {
 				if (!res) {
 					return { status: 404 };

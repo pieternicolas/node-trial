@@ -1,11 +1,11 @@
 import { ObjectID } from 'mongodb';
 import connect from './../util/database.js';
-
 let db;
 connect.mongodb()
 	.then(conn => {
 		db = conn;
 	});
+
 
 export default {
 

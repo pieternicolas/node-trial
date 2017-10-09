@@ -8,7 +8,7 @@ module.exports = {
   context: DEV_DIR,
 
   entry: [
-    path.join(__dirname, 'src/server.js')
+    path.join(DEV_DIR, 'server.js')
   ],
 
   output: {

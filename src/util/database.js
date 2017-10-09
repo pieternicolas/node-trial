@@ -1,13 +1,13 @@
 import { MongoClient } from 'mongodb';
 import mysql from 'mysql';
-import { db } from './../config/';
+import { mongo } from './../config/';
 
 
 export default {
 
 	mongodb: async () => {
 		let conn;
-		await MongoClient.connect(db)
+		await MongoClient.connect(mongo)
 			.then(database => {
 				conn = database;
 			})

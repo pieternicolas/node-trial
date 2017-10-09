@@ -2,7 +2,7 @@ import responder from './../util/responder.js';
 import { notesController } from './../controllers/';
 
 
-export default ( app, db ) => {
+export default ( app ) => {
 
 	/*
 	* GET all notes
@@ -10,7 +10,7 @@ export default ( app, db ) => {
 	*	@return = Array
 	*/
 	app.get( '/notes', (req, res, next) => {
-		notesController.getNotes(app, db)
+		notesController.getNotes(app)
 			.then(response => {
 				responder(res, next, response);
 			})
@@ -26,7 +26,7 @@ export default ( app, db ) => {
 	* @return = Object
 	*/
 	app.get( '/notes/:id', (req, res, next) => {
-		notesController.getSingleNote(app, db, req.params)
+		notesController.getSingleNote(app, req.params)
 			.then(response => {
 				responder(res, next, response);
 			})
@@ -42,7 +42,7 @@ export default ( app, db ) => {
 	* @return = Object (_id, text, title)
 	*/
 	app.post( '/notes', (req, res, next) => {
-		notesController.postNote(app, db, req.body)
+		notesController.postNote(app, req.body)
 			.then(response => {
 				responder(res, next, response);
 			})
@@ -58,7 +58,7 @@ export default ( app, db ) => {
 	* @return = HTTP status
 	*/
 	app.delete( '/notes/:id', (req, res, next) => {
-		notesController.deleteNote(app, db, req.params)
+		notesController.deleteNote(app, req.params)
 			.then(response => {
 				responder(res, next, response);
 			})
@@ -74,7 +74,7 @@ export default ( app, db ) => {
 	* @return = Object
 	*/
 	app.post('/notes/:id/edit', (req, res, next) => {
-		notesController.updateNote(app, db, req.params, req.body)
+		notesController.updateNote(app, req.params, req.body)
 			.then(response => {
 				responder(res, next, response);
 			})

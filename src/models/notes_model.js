@@ -1,9 +1,15 @@
 import { ObjectID } from 'mongodb';
+import connect from './../util/database.js';
 
+let db;
+connect.mongodb()
+	.then(conn => {
+		db = conn;
+	});
 
 export default {
 
-	getNotes: async ( db, params ) => {
+	getNotes: async ( params ) => {
 		let result;
 		try {
 			result = await db.collection('notes').find().toArray();
@@ -14,7 +20,7 @@ export default {
 	},
 
 
-	getSingleNote: async ( db, params ) => {
+	getSingleNote: async ( params ) => {
 		let result;
 		const details = { '_id': new ObjectID(params) };
 		try {
@@ -26,7 +32,7 @@ export default {
 	},
 
 
-	postNote: async ( db, data ) => {
+	postNote: async ( data ) => {
 		let result;
 		try {
 			result = await db.collection('notes').insert(data);
@@ -37,7 +43,7 @@ export default {
 	},
 
 
-	deleteNote: async ( db, params ) => {
+	deleteNote: async ( params ) => {
 		let result;
 		const details = { '_id': new ObjectID(params) };
 		try {
@@ -49,7 +55,7 @@ export default {
 	},
 
 
-	updateNote: async ( db, params, data ) => {
+	updateNote: async ( params, data ) => {
 		let result;
 		const details = { '_id': new ObjectID(params) };
 		try {

@@ -4,8 +4,8 @@ import { notesModel } from './../models/';
 
 export default {
 
-	getNotes: async ( app, db ) => {
-		const result = notesModel.getNotes(db)
+	getNotes: async ( app ) => {
+		const result = notesModel.getNotes()
 			.then(res => {
 				if (!res) {
 					return { status: 404 };
@@ -21,8 +21,8 @@ export default {
 	},
 
 
-	getSingleNote: async ( app, db, params ) => {
-		const result = await notesModel.getSingleNote(db, params.id)
+	getSingleNote: async ( app, params ) => {
+		const result = await notesModel.getSingleNote(params.id)
 			.then(res => {
 				if (!res) {
 					return { status: 404 };
@@ -38,13 +38,13 @@ export default {
 	},
 
 
-	postNote: async ( app, db, data ) => {
+	postNote: async ( app, data ) => {
 		const note = {
 			title: data.title,
 			text: data.text
 		};
 
-		const result = await notesModel.postNote(db, data)
+		const result = await notesModel.postNote(data)
 			.then(res => {
 				if (!res) {
 					return { status: 404 };
@@ -60,8 +60,8 @@ export default {
 	},
 
 
-	deleteNote: async ( app, db, params ) => {
-		const result = await notesModel.deleteNote(db, params.id)
+	deleteNote: async ( app, params ) => {
+		const result = await notesModel.deleteNote(params.id)
 			.then(res => {
 				if (res.result.n === 0) {
 					return { status: 404 };
@@ -77,13 +77,13 @@ export default {
 	},
 
 
-	updateNote: async ( app, db, params, data ) => {
+	updateNote: async ( app, params, data ) => {
 		const note = {
 			title: data.title,
 			text: data.text
 		};
 
-		const result = await notesModel.updateNote(db, params.id, note)
+		const result = await notesModel.updateNote(params.id, note)
 			.then(res => {
 				if (res.result.n === 0) {
 					return { status: 404 };

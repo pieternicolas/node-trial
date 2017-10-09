@@ -7,7 +7,9 @@ import { port } from './config/';
 import routes from './routes/';
 import connect from './util/database.js';
 
+
 const app = express();
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {
@@ -16,24 +18,14 @@ app.use((req, res, next) => {
   next();
 });
 
-// const db = connect.mysql()
+
+routes(app);
+
 
 if (process.env.NODE_ENV != 'test')	{
-
-	connect.mongodb()
-		.then(conn => {
-			routes(app, conn);
-
-			app.listen(port, () => {
-				console.log('We are live on ' + port);
-			});
-		});
-
-} else {
-
-	const conn = connect.mongodb();
-	routes(app, conn);
-	
+	app.listen(port, () => {
+		console.log('We are live on ' + port);
+	});
 };
 
 

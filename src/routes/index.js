@@ -3,7 +3,7 @@ import responder from './../util/responder.js';
 import swaggerFile from './../../swagger.json';
 
 
-export default ( app, db ) => {
+export default ( app ) => {
 
 	app.get('/', (req, res) => {
 		res.status(200).send('Hello to node trial');
@@ -19,7 +19,7 @@ export default ( app, db ) => {
 	});
 	
 
-	noteRoutes(app, db);
+	noteRoutes(app);
 	// Other route groups could go here, in the future
 
 	app.all('*', (req, res, next) => {

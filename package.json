@@ -23,7 +23,7 @@
   "homepage": "https://github.com/pieternicolas/node-trial#readme",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "bcrypt": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "express-validator": "^4.2.1",

@@ -1,5 +1,5 @@
 const path = require('path');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const BabiliPlugin = require('babili-webpack-plugin');
 
 const DIST_DIR   = path.join(__dirname, 'dist'),
       DEV_DIR = path.join(__dirname, 'src');
@@ -17,20 +17,22 @@ module.exports = {
   },
 
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader'
+        loader: 'babel-loader',
+        query: {
+          presets: ['env'],
+          plugins: ['transform-runtime','babel-plugin-root-import']
         }
       }
     ]
   },
 
   plugins: [
-    new UglifyJSPlugin({
-      extractComments: true
+    new BabiliPlugin({
+      mangle: false
     })
   ],
 

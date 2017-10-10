@@ -1,4 +1,4 @@
-const { body } = require('express-validator/check');
+import { body } from 'express-validator/check';
 
 
 export default [

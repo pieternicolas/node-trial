@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 import mysql from 'mysql';
-import { mongo_conf, mysql_conf } from '~/config/';
+import { mongo_conf, mysql_conf } from './../config/';
 
 
 export default {

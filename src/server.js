@@ -3,7 +3,7 @@ import express from 'express';
 import { MongoClient } from 'mongodb';
 import bodyParser from 'body-parser';
 
-import { port } from '~/config/';
+import { port } from './config/';
 import routes from './routes/';
 import connect from './util/database.js';
 

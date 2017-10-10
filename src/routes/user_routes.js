@@ -2,8 +2,7 @@ import responder from './../util/responder.js';
 import { userController } from './../controllers/';
 import userValidate from './../middleware/validators/user.js';
 
-const { validationResult } = require('express-validator/check');
-
+import { validationResult } from 'express-validator/check';
 
 export default (app) => {
 

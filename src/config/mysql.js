@@ -1,4 +1,4 @@
-const settings = require('./../database.json');
+const settings = require('./../../database.json');
 
 module.exports = {
 	host: settings.dev.host,
